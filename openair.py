@@ -17,7 +17,7 @@ LOCAL_ADDITIONS = 'static/local-additions.txt'
 #FILENAME="test.txt"
 SECTORS_FILENAME = 'static/acc-sectors.txt'
 CHANGELOG_FILENAME = 'static/changelog.txt'
-OUTPUT='Norway2024v2'
+OUTPUT='Norway2026'
 
 PLOT_SUBTRACTIONS=False
 USE_EXTENDED_OPENAIR=False
@@ -300,9 +300,6 @@ class Airspace:
         e_coords = [x for x in self.area.exterior.coords]
         i_coords = [x for x in self.area.interiors[0].coords]
 
-        print(self.area.exterior.distance(self.area.interiors))
-
-
     def __str__(self):
         """A string in OpenAir format representing this airspace"""
 
@@ -485,7 +482,7 @@ def parse(*filenames):
 
                 if not airspace.type:
                     # Figure out type from name
-                    if airspace.name.startswith('EN R'):
+                    if airspace.name.startswith('EN R') or airspace.name.startswith('ENR'):
                         airspace.type = 'RESTRICTED'
                     elif airspace.name.startswith('EN D') or airspace.name.startswith('END'):
                         airspace.type = 'DANGER'
@@ -524,7 +521,7 @@ def parse(*filenames):
                         tma_airspaces[tma].append(airspace)
                     
                     for name in airsport:
-                        # Remove the EN DXXX prefix from airsport areas
+                        # Remove the EN prefix from airsport areas
                         if DANGER_AREA_PREFIX.match(airspace.name) and\
                             airspace.name[8:].upper().startswith(name.upper()):
                                 airspace.name = airspace.name[3:]

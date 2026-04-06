@@ -1,7 +1,7 @@
 * ==========================================================================
 * OpenAir format suitable for WinPilot and SeeYou
 * ==========================================================================
-* 2024 June 17 AMG
+* 2025 April 28 AMG
 * ==========================================================================
 * DISCLAIMER
 * ALWAYS CHECK OFFICIAL AIRSPACE BEFORE FLYING.
@@ -67,6 +67,22 @@
 * ==========================================================================
 * CHANGES
 * ==========================================================================
+* 2026 April 6 - AMG
+* - Updated to latest AIP, including:
+*   * Geiteryggen RMZ added
+*   * Restriced area at Halden fengsel
+*   * Restriced area at Chemring Nobel in Sætre
+*   * Minor changes to Værnes TMA
+* - Updated remaining ATC frequencies to 8.33 kHz
+* - Temporarily added Regionskytefelt 5, until it's added officially in AIP
+* - Made Tinnsjø just a danger area.  It's not in use, and complicated Farris geometry.
+*
+* 2025 April 28 - AMG
+* - Updated to latest AIP
+* - Changed many airspaces to new 8.33 frequencies
+* - Added danger area for limits of area allowed in Farris during Notodden GP
+* - Numerous military training areas added all along the coast
+*
 * 2024 Jun 17 - AMG
 * Add D-number to all glider danger area names
 *
