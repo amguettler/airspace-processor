@@ -17,7 +17,7 @@ LOCAL_ADDITIONS = 'static/local-additions.txt'
 #FILENAME="test.txt"
 SECTORS_FILENAME = 'static/acc-sectors.txt'
 CHANGELOG_FILENAME = 'static/changelog.txt'
-OUTPUT='Norway2026'
+OUTPUT='Norway2026v2'
 
 PLOT_SUBTRACTIONS=False
 USE_EXTENDED_OPENAIR=False
@@ -438,7 +438,8 @@ def parse(*filenames):
     airsport_airspaces = {}    # Link to TMA airspace from each aerial sport areas
 
     numbered_airspace_re = re.compile(r'(.*(TMA|TIA|CTA)) \d+')
-    DANGER_AREA_PREFIX = re.compile(r'EN D\d\d\d ')
+    FULL_DANGER_AREA_PREFIX = re.compile(r'EN ?(D\d\d\d (.*))')
+    DANGER_AREA_PREFIX = re.compile(r'D\d\d\d (.*)')
 
     # Prepare airspace config first
     for tma,areas in airspace_config.airsport_areas.items():
@@ -511,6 +512,11 @@ def parse(*filenames):
                 else:
                     airspace.identifier = airspace.name
 
+                # Remove EN prefix from danger areas
+                match = FULL_DANGER_AREA_PREFIX.match(airspace.name)
+                if match:
+                    airspace.name = match.group(1)
+
                 # Check if this TMA has any airsport areas
                 for tma,airsport in airspace_config.airsport_areas.items():
                     tma = tma.upper()
@@ -522,9 +528,10 @@ def parse(*filenames):
                     
                     for name in airsport:
                         # Remove the EN prefix from airsport areas
-                        if DANGER_AREA_PREFIX.match(airspace.name) and\
-                            airspace.name[8:].upper().startswith(name.upper()):
-                                airspace.name = airspace.name[3:]
+                        match = DANGER_AREA_PREFIX.match(airspace.name)
+                        if match:
+                            if match.group(1).upper().startswith(name.upper()):
+                            #airspace.name = match.group(1) #airspace.name[3:]
                                 airspace.key = name
                                 airsport_airspaces[name].append(airspace)
             elif field == 'AL':
@@ -610,9 +617,9 @@ def fix_airsport_overlap():
 
     # First find all the areas we're going to be working on
     for a in airsport_airspaces['STARMOEN']:
-        if a.identifier == 'EN D141 Starmoen G2 Elverum':
+        if a.identifier in ('EN D141 Starmoen G2 Elverum', 'END141 Starmoen G2 Elverum'):
             g = a
-        elif a.identifier == 'EN D142 Starmoen H':
+        elif a.identifier in ('EN D142 Starmoen H', 'END142 Starmoen H'):
             h = a
 
     for a in tma_airspaces['OSLO TMA']:

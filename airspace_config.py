@@ -44,15 +44,16 @@ airspace_frequencies = {
     'D162 Rondane' : ('124.780', 'Polaris Control'),
     'D163 Vågå' : ('124.780', 'Polaris Control'),
     'D166 Jotunheimen' : ('124.780', 'Polaris Control'),
+    'D168 Østre Æra' : ('120.905', 'Østre Æra Traffic'),
     'D357 Oppdal' : ('125.705', 'Polaris Control'),
     'D358 Dovre' : ('125.705', 'Polaris Control'),
     'D359 Lesja' : ('125.705', 'Polaris Control'),
     'D360 Bjorli' : ('125.705', 'Polaris Control'),
-    'Airwork A' : ('118.480', 'Oslo Approach'),
-    'Airwork B' : ('118.480', 'Oslo Approach'),
-    'Airwork C' : ('118.480', 'Oslo Approach'),
-    'Airwork E' : ('118.480', 'Oslo Approach'),
-    'Airwork F' : ('118.480', 'Oslo Approach'),
+    'D107 Airwork A' : ('118.480', 'Oslo Approach'),
+    'D108 Airwork B' : ('118.480', 'Oslo Approach'),
+    'D109 Airwork C' : ('118.480', 'Oslo Approach'),
+    'D113 Airwork E' : ('118.480', 'Oslo Approach'),
+    'D114 Airwork F' : ('118.480', 'Oslo Approach'),
     'Alta TMA' : ('120.405', 'Alta Tower'),
     'Anda TIZ' : ('119.805', 'Anda Information'),
     'Andøya TMA' : ('118.205', 'Andøya Tower'),
@@ -68,7 +69,6 @@ airspace_frequencies = {
     'Bringeland TIZ' : ('118.455', 'Bringeland Information'),  # Førde
     'Brønnøy TIZ' : ('119.605', 'Brønnøy Information'),
     'Båtsfjord TIZ' : ('123.405', 'Båtsfjord Information'),
-    'Østre Æra' : ('120.905', 'Østre Æra Traffic'),
     'Etne' : ('124.780', 'Polaris Control'),
     'Evenes CTR' : ('118.005', 'Evenes Tower'),
     'Evenes TMA' : ('120.105', 'Evenes Approach'),
@@ -145,9 +145,9 @@ airspace_frequencies = {
     'Polaris S17' : ('124.705', 'Polaris Control'),
     'Polaris S18' : ('125.705', 'Polaris Control'),
     'Polaris S19' : ('131.105', 'Polaris Control'),
-    'Rena EAST' : ('134.810', 'Rena Traffic'),
-    'Rena MID' : ('134.810', 'Rena Traffic'),
-    'Rena WEST' : ('134.810', 'Rena Traffic'),
+    'D105 Rena EAST' : ('134.810', 'Rena Traffic'),
+    'D105 Rena MID' : ('134.810', 'Rena Traffic'),
+    'D105 Rena WEST' : ('134.810', 'Rena Traffic'),
     'Rognan Flyplass' : ('123.065', 'Rognan Traffic'),   # Saltdal
     'Rygge CTR' : ('119.505', 'Rygge Tower'),
 #    'Rygge Flystasjon' : ('119.505', 'Rygge Tower'),
@@ -183,9 +183,10 @@ airspace_frequencies = {
 }
 
 REMOVE_AIRSPACES = [
-    'EN D105 Rena',     # Replaced by our own Rena West, Mid and East
+    'END105 Rena',      # Replaced by our own Rena West, Mid and East
     'Bømoen Flyplass',  # Replaced by our own Hoppfelt Bømoen,
-    'EN D201 Ulven'     # Already have a danger area for 'Ulven'
+    'END201 Ulven',     # Already have a danger area for 'Ulven'
+    'ENR103 Kongsvinger' # This area has not been used for years
 ]
 
 DANGER_PREFIX = re.compile(r'EN D\d\d\d ')

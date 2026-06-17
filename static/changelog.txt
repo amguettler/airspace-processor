@@ -1,7 +1,6 @@
 * ==========================================================================
 * OpenAir format suitable for WinPilot and SeeYou
 * ==========================================================================
-* 2025 April 28 AMG
 * ==========================================================================
 * DISCLAIMER
 * ALWAYS CHECK OFFICIAL AIRSPACE BEFORE FLYING.
@@ -67,6 +66,11 @@
 * ==========================================================================
 * CHANGES
 * ==========================================================================
+* 2026 June 17 - AMG
+* - Updated to latest AIP
+* - Added restricted area for Swedish border (Norway championship competition area)
+* - Removed R103 Kongsvinger, as this area has not been in use for years and cause confusion
+*
 * 2026 April 6 - AMG
 * - Updated to latest AIP, including:
 *   * Geiteryggen RMZ added
