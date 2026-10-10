@@ -66,6 +66,9 @@
 * ==========================================================================
 * CHANGES
 * ==========================================================================
+* 2026 October 10 - AMG
+* - Changed filename to include today's date 
+* 
 * 2026 June 17 - AMG
 * - Updated to latest AIP
 * - Added restricted area for Swedish border (Norway championship competition area)

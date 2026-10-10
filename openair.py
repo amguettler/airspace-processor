@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import utm, copy, shapely, re, sys, requests, time
+from datetime import datetime
 from shapely.geometry import Polygon,MultiPolygon,GeometryCollection,LineString
 from shapely import ops, set_precision
 import airspace_config
@@ -17,7 +18,7 @@ LOCAL_ADDITIONS = 'static/local-additions.txt'
 #FILENAME="test.txt"
 SECTORS_FILENAME = 'static/acc-sectors.txt'
 CHANGELOG_FILENAME = 'static/changelog.txt'
-OUTPUT='Norway2026v2'
+OUTPUT='NorwayAirspace-' + datetime.now().strftime('%Y%m%d')
 
 PLOT_SUBTRACTIONS=False
 USE_EXTENDED_OPENAIR=False
@@ -42,7 +43,7 @@ class Coordinate:
     
     def to_dms(self):
         ew = 'E' if self.lon >= 0 else 'W'
-        return '{0:02d}:{1:02d}:{2:02d} N  {3:02d}:{4:02d}:{5:02d} {ew}'.format(*to_dms(self.lat), *to_dms(abs(self.lon)), ew=ew)
+        return '{0:02d}:{1:02d}:{2:02d} N  {3:03d}:{4:02d}:{5:02d} {ew}'.format(*to_dms(self.lat), *to_dms(abs(self.lon)), ew=ew)
 
     def to_openair(self):
         return 'DP ' + self.to_dms()
