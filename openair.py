@@ -372,15 +372,13 @@ class Airspace:
             cls = self.cls
             if USE_EXTENDED_OPENAIR:
                 # In extended OpenAir, class should purely be ICAO class, so
-                # change to class G what is not A,B,C,D,E (concerns warning areas, restrictions areas)
-                if cls not in 'ABCDE':
-                    cls = 'G'
+                # change to UNC (unclassified) what is not A,B,C,D,E,F (concerns warning areas, restrictions areas)
+                if cls not in 'ABCDEF':
+                    cls = 'UNC'
             lines.append('AC ' + cls)
             if USE_EXTENDED_OPENAIR:
                 lines.append('AY ' + self.type)
             lines.append('AN ' + self.name)
-            if USE_EXTENDED_OPENAIR:
-                lines.append('AI ' + self.identifier)
             lines.append('AL ' + self.limit_low)
             lines.append('AH ' + self.limit_high)
             if self.frequency:
@@ -485,9 +483,9 @@ def parse(*filenames):
                 if not airspace.type:
                     # Figure out type from name
                     if airspace.name.startswith('EN R') or airspace.name.startswith('ENR'):
-                        airspace.type = 'RESTRICTED'
+                        airspace.type = 'R'
                     elif airspace.name.startswith('EN D') or airspace.name.startswith('END'):
-                        airspace.type = 'DANGER'
+                        airspace.type = 'Q'
                     elif 'CTA' in airspace.name:
                         airspace.type = 'CTA'
                     elif 'CTR' in airspace.name:
@@ -497,7 +495,7 @@ def parse(*filenames):
                     elif 'TIA' in airspace.name or 'TIZ' in airspace.name:
                         airspace.type = 'RMZ'
                     elif airspace.cls in ('G', 'Q', 'W'):
-                        airspace.type = 'DANGER'
+                        airspace.type = 'Q'
                     else:
                         print(f'Unable to find airspace type for {airspace.name}')
                 
@@ -534,6 +532,7 @@ def parse(*filenames):
                             if match.group(1).upper().startswith(name.upper()):
                             #airspace.name = match.group(1) #airspace.name[3:]
                                 airspace.key = name
+                                airspace.type = 'GSEC'  # Gliding sector
                                 airsport_airspaces[name].append(airspace)
             elif field == 'AL':
                 airspace.limit_low = rest
@@ -597,7 +596,7 @@ def parse_acc_sectors(filename):
             a = Airspace()
             a.name = f'Polaris S{match.group(1)}'
             a.key = a.name
-            a.identifier = a.name
+#            a.identifier = a.name
             spaces.append(a)
         elif line.strip():  # ignore blank lines
             coord = Coordinate.from_string(line)
@@ -715,9 +714,10 @@ if __name__ == '__main__':
     for extended in (False,True):
         USE_EXTENDED_OPENAIR = extended
         if USE_EXTENDED_OPENAIR:
-            filename = OUTPUT + '-extended.txt'
+            filename = OUTPUT + '.openair'
             # SeeYou, which this format is intended for, uses Latin-1
-            output = open(filename, 'w', encoding='latin-1')
+            #output = open(filename, 'w', encoding='latin-1')
+            output = open(filename, 'w', encoding='utf-8')
         else:
             filename = OUTPUT + '.txt'
             output = open(filename, 'w', encoding='utf-8')

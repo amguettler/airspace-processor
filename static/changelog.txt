@@ -1,3 +1,5 @@
+*VERSION: 2.0
+*WRITTEN_BY: SeeYou
 * ==========================================================================
 * OpenAir format suitable for WinPilot and SeeYou
 * ==========================================================================
@@ -68,6 +70,7 @@
 * ==========================================================================
 * 2026 October 10 - AMG
 * - Changed filename to include today's date 
+* - Changed format to OpenAir version 2.0
 * 
 * 2026 June 17 - AMG
 * - Updated to latest AIP
