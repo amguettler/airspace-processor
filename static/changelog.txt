@@ -1,5 +1,5 @@
-*VERSION: 2.0
-*WRITTEN_BY: SeeYou
+* VERSION: 2.1
+* WRITTEN_BY: Norwegian Contest Committee
 * ==========================================================================
 * OpenAir format suitable for WinPilot and SeeYou
 * ==========================================================================
@@ -45,10 +45,7 @@
 * been defined.  These are areas that can be opened and used by glider
 * pilots. The sectors are subject to special procedures regarding opening 
 * closing and use.  The following documents apply (Norwegian only):
-* 
-*  http://www.nlf.no/sites/default/files/seilfly/dokument/avtale_luftsportsomrader_oslo_og_farris_tma_10.12.14.pdf
-*  http://www.nlf.no/sites/default/files/seilfly/dokument/luftsportsomrader_2011_telefon_og_frekvenser.pdf
-*  http://www.nlf.no/sites/default/files/seilfly/dokument/veileder_2011_bakkestasjoner.pdf
+* https://nlf.no/grener/seilfly/seilflyseksjonen/handboker/dokumenterogskjemaer/
 *  
 * Foreign pilots are adviced to contact local clubs or staff at
 * Starmoen airfield for more information.
@@ -70,7 +67,10 @@
 * ==========================================================================
 * 2026 October 10 - AMG
 * - Changed filename to include today's date 
-* - Changed format to OpenAir version 2.0
+* - Changed format to OpenAir version 2.1, and only generate this version
+* - Added frequency to Geiteryggen RMZ and Oslo RMZ
+* - Removed D361 Hjerkinn (permanently removed by NOTAM)
+* - Updated link to glider area documents
 * 
 * 2026 June 17 - AMG
 * - Updated to latest AIP

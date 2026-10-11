@@ -21,7 +21,7 @@ CHANGELOG_FILENAME = 'static/changelog.txt'
 OUTPUT='NorwayAirspace-' + datetime.now().strftime('%Y%m%d')
 
 PLOT_SUBTRACTIONS=False
-USE_EXTENDED_OPENAIR=False
+USE_EXTENDED_OPENAIR=True
 
 
 def to_dms(dd):
@@ -711,30 +711,29 @@ if __name__ == '__main__':
     
     subtract_airsport_airspaces()
 
-    for extended in (False,True):
-        USE_EXTENDED_OPENAIR = extended
-        if USE_EXTENDED_OPENAIR:
-            filename = OUTPUT + '.openair'
-            # SeeYou, which this format is intended for, uses Latin-1
-            #output = open(filename, 'w', encoding='latin-1')
-            output = open(filename, 'w', encoding='utf-8')
+    if USE_EXTENDED_OPENAIR:
+        filename = OUTPUT + '.openair'
+        # SeeYou, which this format is intended for, uses Latin-1
+        # output = open(filename, 'w', encoding='latin-1')
+        # UPDATE: SeeYou from version 10.80 requires utf-8
+        output = open(filename, 'w', encoding='utf-8')
+    else:
+        filename = OUTPUT + '.txt'
+        output = open(filename, 'w', encoding='utf-8')
+
+    output.write(open(CHANGELOG_FILENAME).read())
+
+    empty_line = False
+    for line in file_input:
+        content = str(line).strip()
+        if not content:
+            # Skip multiple empty lines
+            if empty_line:
+                continue
+            empty_line = True
         else:
-            filename = OUTPUT + '.txt'
-            output = open(filename, 'w', encoding='utf-8')
+            empty_line = False
 
-        output.write(open(CHANGELOG_FILENAME).read())
-
-        empty_line = False
-        for line in file_input:
-            content = str(line).strip()
-            if not content:
-                # Skip multiple empty lines
-                if empty_line:
-                    continue
-                empty_line = True
-            else:
-                empty_line = False
-
-            output.write(content + '\n')
-        output.close()
-        print('Result written to', filename)
+        output.write(content + '\n')
+    output.close()
+    print('Result written to', filename)

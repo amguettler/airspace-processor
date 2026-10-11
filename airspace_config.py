@@ -4,8 +4,8 @@ airsport_areas = {
     'Oslo TMA' : ['STARMOEN', 'HOKKSUND', 'EGGEMOEN', 'EINA', 'SUNNVOLLEN', 'HVITTINGFOSS'],
     'Farris TMA' : ['HVITTINGFOSS', 'GVARV', 'LUNDE', 'DRANGEDAL', 'BOE', 'BØ', 
                     'TOKKE', 'NOTODDEN VEST'],
-    'Flesland TMA' : ['GULLFJELLET GLIDER AREA', 'KVAM TRANSIT AREA'],
-    'WestCoast TMA' : ['KVAM TRANSIT AREA', 'GULLFJELLET GLIDER AREA'],
+    'Flesland TMA' : ['Gullfjellet Glider Area', 'Kvam Transit Area'],
+    'WestCoast TMA' : ['Kvam Transit Area', 'Gullfjellet Glider Area'],
     'Værnes TMA' : ['MERÅKER'],
     'Polaris CTA' : ['Bjorli', 'Lesja', 'Dovre', 'Oppdal',
                      'Vågå', 'Rondane', 'Ringebu', 'Jotunheimen'
@@ -87,8 +87,9 @@ airspace_frequencies = {
     'Flesland TMA 10' : ('126.100', 'Flesland Approach'),
     'Flesland TMA 11' : ('126.100', 'Flesland Approach'),
     'Florø TIZ' : ('119.205', 'Florø Information'),
-    'Gullfjellet Glider Area' : ('126.100', 'Flesland Approach'),
     'Gardermoen CTR' : ('120.105', 'Oslo Tower'),
+    'Geiteryggen RMZ' : ('119.205', 'Geiteryggen Traffic'),
+    'Gullfjellet Glider Area' : ('126.100', 'Flesland Approach'),
 #    'Hamar Flyplass' : ('130.280', 'Hamar Traffic'),
     'Hammerfest TIZ' : ('121.005', 'Hammerfest Information'),
     'Hammerfest TMA' : ('126.705', 'Polaris Control'),
@@ -119,6 +120,7 @@ airspace_frequencies = {
     'Namsos TIA' : ('118.555', 'Polaris Control'),
     'Namsos TIZ' : ('119.905', 'Namsos Information'),
     'Notodden TIZ' : ('118.805', 'Notodden Information'),
+    'Oslo RMZ/TMZ' : ('122.00', 'Oslo Traffic'),
     'Oslo TMA' : ('118.480', 'Oslo Approach'),
     'Oslo TMA 2' : ('120.455', 'Oslo Approach'),
     'Oslo TMA 3' : ('118.480', 'Oslo Approach'),
@@ -184,6 +186,7 @@ airspace_frequencies = {
 
 REMOVE_AIRSPACES = [
     'END105 Rena',      # Replaced by our own Rena West, Mid and East
+    'END361 Hjerkinn',   # Removed by NOTAM
     'Bømoen Flyplass',  # Replaced by our own Hoppfelt Bømoen,
     'END201 Ulven',     # Already have a danger area for 'Ulven'
     'ENR103 Kongsvinger' # This area has not been used for years
